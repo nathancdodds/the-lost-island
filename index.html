@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#163b32">
+  <title>The Lost Island</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main id="game">
+    <canvas id="world" aria-label="The Lost Island game world"></canvas>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">LI</span><div><h1>THE LOST ISLAND</h1><span class="eyebrow">A LITTLE WORLD. A LONG WAY HOME.</span></div></div>
+      <div class="time"><span id="sun-icon">*</span><div><strong id="clock">08:00</strong><span id="day">DAY 01</span></div></div>
+      <nav aria-label="Game menus">
+        <button data-panel="inventory" title="Inventory (I)" aria-label="Inventory"><span class="pixel-icon bag"></span></button>
+        <button data-panel="craft" title="Crafting (C)" aria-label="Crafting"><span class="pixel-icon hammer"></span></button>
+        <button data-panel="map" title="Map (M)" aria-label="Map"><span class="pixel-icon map-icon"></span></button>
+        <button data-panel="guide" title="Guide: how to get things (G)" aria-label="Guide: how to get things"><span class="help-mark">?</span></button>
+        <button data-panel="settings" title="Pause and settings (Escape)" aria-label="Pause and settings"><span class="pixel-icon gear">II</span></button>
+      </nav>
+    </header>
+    <section class="journey" aria-label="Current quest">
+      <span class="eyebrow accent">YOUR JOURNEY</span>
+      <h2 id="quest-title">A foothold</h2>
+      <p id="quest-description">Gather supplies from the island.</p>
+      <div class="quest-progress"><span id="quest-fill"></span></div>
+      <div class="quest-footer"><span id="quest-count">0 / 10</span><button data-panel="journal">Journal <span> &gt;</span></button></div>
+    </section>
+    <section class="navigation" aria-label="Location and minimap">
+      <div><span class="location-dot"></span><strong id="location">Wanderer's Shore</strong><span class="eyebrow">N</span></div>
+      <canvas id="minimap" width="180" height="130" aria-label="Island minimap"></canvas>
+      <span class="coordinates" id="coordinates">THE EMERALD ARCHIPELAGO</span>
+    </section>
+    <div id="discovery" class="discovery"><span class="eyebrow">UNCHARTED NO MORE</span><h2></h2></div>
+    <div id="notifications" class="notifications" aria-live="polite"></div>
+    <div id="interaction" class="interaction"><kbd>E</kbd><span>Gather</span></div>
+    <footer class="bottom-hud">
+      <div class="vitals">
+        <div class="vital"><span class="heart">+</span><div><span class="stat-label">HEALTH <b id="health-value">100</b></span><div class="meter"><span id="health-fill"></span></div></div></div>
+        <div class="vital"><span class="stamina-icon">/</span><div><span class="stat-label">STAMINA <b id="stamina-value">100</b></span><div class="meter stamina"><span id="stamina-fill"></span></div></div></div>
+      </div>
+      <div id="hotbar" class="hotbar" aria-label="Quick inventory"></div>
+      <div class="bottom-actions"><div class="quick-row"><button data-panel="inventory" title="Inventory (I)"><span class="pixel-icon bag"></span>Bag</button><button data-panel="guide" title="Guide: how to get things (G)"><span class="help-mark">?</span>Guide</button><button id="save-button"><span class="save-icon"></span>Save</button></div><span id="save-status">LOCAL ADVENTURE</span></div>
+    </footer>
+    <div class="touch-controls" aria-label="Touch controls"><div class="dpad"><button data-key="w" aria-label="Move up">^</button><button data-key="a" aria-label="Move left">&lt;</button><button data-key="s" aria-label="Move down">v</button><button data-key="d" aria-label="Move right">&gt;</button></div><div class="touch-actions"><button data-panel="inventory" aria-label="Inventory" title="Inventory"><span class="pixel-icon bag"></span></button><button id="touch-interact">E</button><button id="touch-attack">+</button></div></div>
+    <div id="overlay" class="overlay" hidden>
+      <section class="panel" role="dialog" aria-modal="true" aria-labelledby="panel-title">
+        <header class="panel-header"><div><span class="eyebrow">THE LOST ISLAND</span><h2 id="panel-title">Inventory</h2></div><button id="close-panel" aria-label="Close menu" title="Close (Escape)">X</button></header>
+        <div id="panel-content"></div>
+      </section>
+    </div>
+    <input id="import-file" type="file" accept="application/json,.json" hidden>
+  </main>
+</body>
+</html>
